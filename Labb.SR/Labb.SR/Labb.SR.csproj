@@ -118,6 +118,7 @@
     <Content Include="Content\2011.3.1129\textures\glass.png" />
     <Content Include="Content\2011.3.1129\textures\highlight.png" />
     <Content Include="Content\qunit.css" />
+    <Content Include="Content\sr.xml" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />

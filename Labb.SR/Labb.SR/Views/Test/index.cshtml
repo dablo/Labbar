@@ -11,32 +11,44 @@
     <script type="text/javascript">
         // --- Unittest Code goes here ---
 
+        //        $(document).ready(function () {
+        //            module("Basic Unit Test");
+        //            test("Sample test", function () {
+        //                expect(1);
+        //                equals(divide(4, 2), 2, 'Expected 2 as the result, result was: ' + divide(4, 2));
+        //            });
+        //        });
+
+        //        var datasource = new kendo.data.DataSource({
+        //            transport: {
+        //                read: {
+        //                    url: "http://sverigesradio.se/xmltv/sr_2012-01-12.xml",
+        //                    dataType: "xml"
+
+        //                }
+        //            }
+        //        });
+
+
         $(document).ready(function () {
-            module("Basic Unit Test");
-            test("Sample test", function () {
-                expect(1);
-                equals(divide(4, 2), 2, 'Expected 2 as the result, result was: ' + divide(4, 2));
-            });
-        });
+            //            alert('Hämtar tablå.');
+            //            $.get('http://sverigesradio.se/xmltv/sr_2012-01-23.xml', function (data) {
+            //                //$('.result').html(data);
+            //                alert('Load was performed.' + data);
+            //            });
 
-        var datasource = new kendo.data.DataSource({
-            transport: {
-                read: {
-                    url: "http://sverigesradio.se/xmltv/sr_2012-01-12.xml",
-                    dataType: "xml"
 
-                }
-            }
-        });
+            var jqxhr = $.get('/Content/sr.xml', function (data) {
+                $(data).find('channel').each(function (kanal) {
+                    $('<li>' + $(this).find('display-name').text() + '</li>').appendTo(kanaler);
 
-        $(document).ready(function () {
-            module("SR Test");
-            test("Hämta dagens tablå", function () {
-                expect(1);
-                var tablå = datasource.read();
-                notEqual(tablå, null, 'Borde vara någonting...');
+                })
+            })
+            //              .success(function () { alert("second success"); })
+            //              .error(function () { alert("error"); })
+            //              .complete(function () { alert("complete"); });
 
-            });
+
         });
 
 
@@ -44,13 +56,7 @@
     </script>
 </head>
 <body>
-    <h1 id="qunit-header">
-        QUnit example</h1>
-    <h2 id="qunit-banner">
-    </h2>
-    <h2 id="qunit-userAgent">
-    </h2>
-    <ol id="qunit-tests">
+    <ol id="kanaler">
     </ol>
 </body>
 </html>
